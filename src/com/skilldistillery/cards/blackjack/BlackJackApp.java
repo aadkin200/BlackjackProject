@@ -3,6 +3,7 @@ package com.skilldistillery.cards.blackjack;
 import java.util.Scanner;
 
 import com.skilldistillery.cards.common.Dealer;
+import com.skilldistillery.cards.common.Hand;
 import com.skilldistillery.cards.common.Participants;
 import com.skilldistillery.cards.common.Player;
 
@@ -36,10 +37,12 @@ public class BlackJackApp {
 		stand = false;
 		Participants player = new Player();
 		Participants dealer = new Dealer();
+		dealer.resetDeck();
 		boolean running = true;
 		while (running) {
 			displayHands(player, dealer);
 			hitOrStandMenu(player, dealer);
+			checkBlackJack(player, dealer);
 			int choice = choice();
 			switch (choice) {
 			case 1:
@@ -49,38 +52,59 @@ public class BlackJackApp {
 				stand = true;
 				stand(player, dealer);
 				break;
+			case 3:
+				System.out.println(Hand.deck.toString());
 			}
-			if (bust(player)) {
-				System.out.println("*************** You busted! ***************");
-				bustMenu(player, dealer);
+			checkBust(player, dealer);
+			if (stand == true) {
+				checkWinner(player, dealer);
 			}
 		}
 	}
+
+	public void checkBlackJack(Participants player, Participants dealer) {
+		if (player.getHand().getHandValue() == 21 && dealer.getHand().getHandValue() == 21) {
+			System.out.println("*************** You and Dealer Blackjack! ***************");
+			bustMenu(player, dealer);
+		} else if(player.getHand().getHandValue() == 21) {
+			System.out.println("*************** You Blackjack! ***************");
+			bustMenu(player, dealer);
+		} else if(dealer.getHand().getHandValue() == 21) {
+			System.out.println("*************** Dealer Blackjack! ***************");
+			bustMenu(player, dealer);
+		}
+	}
+	public void checkBust(Participants player, Participants dealer) {
+		if (bust(player)) {
+			System.out.println("*************** You busted! ***************");
+			System.out.println("*************** Dealer Win! ***************");
+			bustMenu(player, dealer);
+		} else if (bust(dealer)) {
+			System.out.println("*************** Dealer busted! ***************");
+			System.out.println("*************** You Win! ***************");
+			bustMenu(player, dealer);
+		}
+
+	}
 	
+	public void checkWinner(Participants player, Participants dealer) {
+		if (player.getHand().getHandValue() > dealer.getHand().getHandValue()) {
+			System.out.println("*************** You Win! ***************");
+			bustMenu(player, dealer);
+		} else if (player.getHand().getHandValue() < dealer.getHand().getHandValue()) {
+			System.out.println("*************** Dealer Win! ***************");
+			bustMenu(player, dealer);
+		} else if (dealer.getHand().getHandValue() == player.getHand().getHandValue()) {
+			System.out.println("*************** You tied the dealer! ***************");
+			bustMenu(player, dealer);
+		}
+	}
+
 //	Logic for dealing the dealer cards once player stands
 	public void stand(Participants player, Participants dealer) {
 		while (dealer.getHand().getHandValue() < 17
 				&& dealer.getHand().getHandValue() < player.getHand().getHandValue()) {
 			dealer.getHand().addCard(dealer.getHand().deck.dealCard());
-			if (dealer.getHand().getHandValue() > 21) {
-				System.out.println("*************** You Win! ***************");
-				bustMenu(player, dealer);
-			} else if (dealer.getHand().getHandValue() == player.getHand().getHandValue()) {
-				System.out.println("You tied the dealer!");
-				bustMenu(player, dealer);
-
-			} else if (player.getHand().getHandValue()<dealer.getHand().getHandValue()){
-				System.out.println("*************** Dealer Win! ***************");
-//				displayHands(player, dealer);
-				bustMenu(player, dealer);
-			}
-		}
-		if(player.getHand().getHandValue()>dealer.getHand().getHandValue()) {
-			System.out.println("*************** You Win! ***************");
-			bustMenu(player, dealer);
-		} else if (player.getHand().getHandValue()<dealer.getHand().getHandValue()) {
-			System.out.println("*************** Dealer Win! ***************");
-			bustMenu(player, dealer);
 		}
 	}
 
@@ -135,10 +159,10 @@ public class BlackJackApp {
 		System.out.println("-------------------------------");
 	}
 
-	
 	public void hitOrStandMenu(Participants player, Participants dealer) {
 		System.out.println("1. Hit");
 		System.out.println("2. Stand");
+		System.out.println("3. Show shuffled deck");
 	}
 
 //	used throughout program to get user input and clear line for next input

@@ -10,6 +10,12 @@ public abstract class Participants {
 		hand = new Hand();
 	}
 	
+	public void resetDeck() {
+		if(hand.deck.checkDeckSize() < 10) {
+			hand.deck = new Deck();
+		}
+	}
+	
 
 	public Hand getHand() {
 		return hand;

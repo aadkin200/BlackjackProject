@@ -31,6 +31,7 @@ public class Deck {
 		return deck.remove(0);
 	}
 	
+	
 	public void shuffle() {
 		Collections.shuffle(deck);
 	}
