@@ -3,7 +3,9 @@
 ## Overview
 A command line Blackjack game. The normal rules of Black jack have been coded within the program, you can use the options shown to navigate through each round. The game is based on ONE deck of cards, there is no shoe in this program. For more rules on Blackjack click [here](https://bicyclecards.com/how-to-play/blackjack/)
 
-<img src="https://banner2.cleanpng.com/20180404/zww/kisspng-eclipse-computer-icons-integrated-development-envi-eclipse-5ac531e02a77f0.157488451522872800174.jpg" alt = "eclipse" width="100" height="100"/>
+<img src="kisspng-java-logo-programming-language-java-plum-5ac7bef24d5452.5438873115230399863168.png" alt = "eclipse" width="75" height="100" align="center"/>
+<img src="pngegg.png" alt = "eclipse" width="100" height="100" align="center" float="center"/>
+<img src="kisspng-eclipse-foundation-integrated-development-environm-eclipse-5ac24212bdda89.2215472915226803387777.png" alt = "eclipse" width="150" height="150" align="center"/>
 
 ### Technologies Used
 * [Java](https://en.wikipedia.org/wiki/Java_)</br>
