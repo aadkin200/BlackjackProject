@@ -1,7 +1,7 @@
 # Blackjack Project
 
 ## Overview
-A command line Blackjack game. The normal rules of Black jack have been coded within the program, you can use the options shown to navigate through each round. The game is based on ONE deck of cards, there is no shoe in this program.
+A command line Blackjack game. The normal rules of Black jack have been coded within the program, you can use the options shown to navigate through each round. The game is based on ONE deck of cards, there is no shoe in this program. For more rules on Blackjack click [here](https://bicyclecards.com/how-to-play/blackjack/)
 
 ### Technologies Used
 * [Java](https://en.wikipedia.org/wiki/Java_)</br>

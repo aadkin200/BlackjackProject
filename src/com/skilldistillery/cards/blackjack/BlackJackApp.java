@@ -52,8 +52,6 @@ public class BlackJackApp {
 				stand = true;
 				stand(player, dealer);
 				break;
-			case 3:
-				System.out.println(Hand.deck.toString());
 			}
 			checkBust(player, dealer);
 			if (stand == true) {
@@ -162,7 +160,6 @@ public class BlackJackApp {
 	public void hitOrStandMenu(Participants player, Participants dealer) {
 		System.out.println("1. Hit");
 		System.out.println("2. Stand");
-		System.out.println("3. Show shuffled deck");
 	}
 
 //	used throughout program to get user input and clear line for next input
