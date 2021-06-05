@@ -4,7 +4,7 @@
 In this project I created a command-line Blackjack game.
 
 ### Technologies Used
-* [Java](https://en.wikipedia.org/wiki/Java_(programming_language)</br>
+* [Java](https://en.wikipedia.org/wiki/Java_)</br>
 * [Enums](https://docs.oracle.com/javase/tutorial/java/javaOO/enum.html)</br>
 * [Object-Oriented design](https://stackabuse.com/object-oriented-design-principles-in-java)</br>
 * [Eclipse](https://www.eclipse.org/ide/)</br>
