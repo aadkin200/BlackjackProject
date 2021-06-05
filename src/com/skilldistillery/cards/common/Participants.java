@@ -16,6 +16,9 @@ public abstract class Participants {
 		}
 	}
 	
+	public int getValue() {
+		return this.hand.getHandValue();
+	}
 
 	public Hand getHand() {
 		return hand;

@@ -61,7 +61,7 @@ public class BlackJackApp {
 	}
 
 	public void checkBlackJack(Participants player, Participants dealer) {
-		if (player.getHand().getHandValue() == 21 && dealer.getHand().getHandValue() == 21) {
+		if (player.getValue() == 21 && dealer.getValue() == 21) {
 			System.out.println("*************** You and Dealer Blackjack! ***************");
 			bustMenu(player, dealer);
 		} else if(player.getHand().getHandValue() == 21) {
@@ -86,13 +86,13 @@ public class BlackJackApp {
 	}
 	
 	public void checkWinner(Participants player, Participants dealer) {
-		if (player.getHand().getHandValue() > dealer.getHand().getHandValue()) {
+		if (player.getValue() > dealer.getValue()) {
 			System.out.println("*************** You Win! ***************");
 			bustMenu(player, dealer);
-		} else if (player.getHand().getHandValue() < dealer.getHand().getHandValue()) {
+		} else if (player.getValue() < dealer.getValue()) {
 			System.out.println("*************** Dealer Win! ***************");
 			bustMenu(player, dealer);
-		} else if (dealer.getHand().getHandValue() == player.getHand().getHandValue()) {
+		} else if (dealer.getValue() == player.getValue()) {
 			System.out.println("*************** You tied the dealer! ***************");
 			bustMenu(player, dealer);
 		}
@@ -100,9 +100,9 @@ public class BlackJackApp {
 
 //	Logic for dealing the dealer cards once player stands
 	public void stand(Participants player, Participants dealer) {
-		while (dealer.getHand().getHandValue() < 17
-				&& dealer.getHand().getHandValue() < player.getHand().getHandValue()) {
-			dealer.getHand().addCard(dealer.getHand().deck.dealCard());
+		while (dealer.getValue() < 17
+				&& dealer.getValue() < player.getValue()) {
+			deal(dealer);
 		}
 	}
 
@@ -125,7 +125,7 @@ public class BlackJackApp {
 
 //	Determines if Participant has busted
 	public boolean bust(Participants participant) {
-		if (participant.getHand().getHandValue() > 21) {
+		if (participant.getValue() > 21) {
 			return true;
 		} else {
 			return false;
